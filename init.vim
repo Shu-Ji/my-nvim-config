@@ -20,7 +20,7 @@ Plug 'chr4/nginx.vim'
 
 " pug jade
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
-Plug 'dingitaltoad/vim-pug'
+Plug 'digitaltoad/vim-jade'
 
 
 " ctags
@@ -43,6 +43,9 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
 Plug 'deoplete-plugins/deoplete-jedi'
 " 自动缩进
 Plug 'vim-scripts/indentpython.vim'
+
+" 前端很多的库支持
+Plug 'othree/javascript-libraries-syntax.vim'
 
 " 代码高亮
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -112,7 +115,11 @@ Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 
+" ctags 中显示 coffeescript 变量
 let g:CoffeeAutoTagIncludeVars=1
+
+"  支持 补全的前端库
+let g:used_javascript_libs = 'jquery,underscore,angularjs,react,vue'
 
 
 nmap <F8> :TagbarToggle<CR>
