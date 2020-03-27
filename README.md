@@ -1,6 +1,6 @@
 # my-nvim-config
 
-主要是支持常用的一些语言的高亮、lint 以及自动 fix。
+主要是支持常用的一些语言的 补全、高亮、lint 以及自动 fix。
 
 Python
 
