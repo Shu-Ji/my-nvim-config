@@ -8,6 +8,8 @@ ES6、CoffeeScript、Pug、Html、CSS(Less/Sass/Scss)、JSX、Vue、lodash、Jav
 
 SQL、JSON、QML、Markdown
 
+Dart
+
 
 很多插件需要 Python 和 NodeJS 才能使用。
 
