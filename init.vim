@@ -113,8 +113,6 @@ Plug 'fisadev/vim-isort'
 
 " ctrlp
 Plug 'ctrlpvim/ctrlp.vim'
-" 用 python 加速 ctrlp 搜索
-Plug 'FelikZ/ctrlp-py-matcher'
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -548,9 +546,10 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
-" 用 python 加速 ctrlp 搜索
-" 需要插件 Plug 'FelikZ/ctrlp-py-matcher'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" 需要先安装 ripgrep
+set grepprg=rg\ --color=never
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
 
 
 " ternjs 补全 js 配置
