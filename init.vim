@@ -53,6 +53,8 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 " 自动缩进
 Plug 'vim-scripts/indentpython.vim'
+" 使用 机器学习进行代码补全
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
 " 前端很多的库支持
 Plug 'othree/javascript-libraries-syntax.vim'
