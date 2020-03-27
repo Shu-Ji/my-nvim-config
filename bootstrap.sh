@@ -1,7 +1,13 @@
-mkdir -p ~/.config/nvim/
+#!/bin/bash
 
-cp ./init.vim ~/..config/nvim/
+me=`dirname $0`
+cd $me
+me=`pwd`
 
+nvim=~/.config/nvim
+mkdir -p $nvim
+
+ln -s $me/init.vim $nvim/init.vim
 
 brew install martindelille/tap/qmlfmt
 
