@@ -14,7 +14,7 @@ workon neovim-py3
 pip3 install pynvim yapf docformatter
 
 
-yarn global add neovim
+./bootstrap.sh
 ```
 
 #
