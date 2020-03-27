@@ -1,6 +1,9 @@
 # my-nvim-config
 
-###python
+很多插件需要 Python 和 NodeJS 才能使用。
+
+### Python
+
 
 先做两个 py 版本，一个 v2，一个 v3。
 
@@ -15,7 +18,7 @@ workon neovim-py3
 pip3 install -r pip3-requirements.txt
 ```
 
-## nodejs
+## NodeJS
 
 TODO
 
