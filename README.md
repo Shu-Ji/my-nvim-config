@@ -17,13 +17,6 @@ pip3 install pynvim yapf docformatter
 ./bootstrap.sh
 ```
 
-#
-
-修改 init.vim 最顶部的 python2 和 python3 为 virtualenvs 的 py 路径。
-```
-let g:python3_host_prog = '/home/xxx/.virtualenvs/neovim-py3/bin/python3'
-let g:python_host_prog = '/home/xxx/.virtualenvs/neovim-py2/bin/python2'
-```
 
 ## 检查
 
