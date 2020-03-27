@@ -137,6 +137,14 @@ Plug 'pechorin/any-jump.vim'
 call plug#end()
 
 
+" 机器学习 tabnine 预测
+" https://github.com/tbodt/deoplete-tabnine
+call deoplete#custom#var('tabnine', {
+            \ 'line_limit': 10000,
+            \ 'max_num_results': 10,
+            \ })
+
+
 " ctags 中显示 coffeescript 变量
 let g:CoffeeAutoTagIncludeVars=1
 
@@ -163,6 +171,8 @@ let g:jedi#goto_definitions_command = ""
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#rename_command = "<leader><F6>"
+
+g:deoplete#sources#jedi#show_docstring = 1
 
 
 " minibuffer
