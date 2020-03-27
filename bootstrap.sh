@@ -21,7 +21,7 @@ yarn global add neovim
 yarn global add pug-beautifier
 
 # js 补全
-yarn global add tern
+yarn global add tern flow-bin
 
 # coffeescript
 yarn global add coffeelint

@@ -46,7 +46,7 @@ Plug 'lukaszkorecki/coffeetags'
 " 自动补全
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "  补全 js
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern neovim' }
+Plug 'carlitux/deoplete-ternjs'
 " 补全 Python
 Plug 'deoplete-plugins/deoplete-jedi'
 " Python 代码跳转(他也支持补全，但是禁用了，因为我们使用 deoplete)
@@ -55,6 +55,10 @@ Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/indentpython.vim'
 " 使用 机器学习进行代码补全
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
+" 补全
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " 前端很多的库支持
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -130,6 +134,9 @@ let g:CoffeeAutoTagIncludeVars=1
 
 "  支持 补全的前端库
 let g:used_javascript_libs = 'jquery,underscore,angularjs,react,vue'
+
+" 启动 snippet 补全
+let g:neosnippet#enable_completed_snippet = 1
 
 
 nmap <F8> :TagbarToggle<CR>
