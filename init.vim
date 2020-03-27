@@ -70,6 +70,10 @@ Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " 自动补全括号和引号等
 Plug 'jiangmiao/auto-pairs'
 
+" 补全引号
+" https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround'
+
 " markdown
 "Plug 'godlygeek/tabular'
 "Plug 'plasticboy/vim-markdown'
