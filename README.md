@@ -8,10 +8,10 @@ mkvirtualenv neovim-py2 --python=python2
 mkvirtualenv neovim-py2 --python=python3
 
 workon neovim-py2
-pip2 install pynvim yapf
+pip2 install pynvim yapf docformatter
 
 workon neovim-py3
-pip3 install pynvim yapf
+pip3 install pynvim yapf docformatter
 
 
 yarn global add neovim

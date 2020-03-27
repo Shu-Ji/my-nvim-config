@@ -239,13 +239,13 @@ au FocusGained * :set relativenumber
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set relativenumber
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-    set number
-  else
-    set nonumber
-    set relativenumber
-  endif
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set nonumber
+        set relativenumber
+    endif
 endfunc
 
 "  设置主题
@@ -295,7 +295,7 @@ let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
 " 指定修复 pep8 错误的 fixer
-let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'autopep8', 'isort']}
+let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'yapf', 'isort']}
 " 修复语法和格式错误 ctr + shift + l"
 nnoremap <C-S-l> :ALEFix<CR>
 
@@ -433,9 +433,9 @@ set undodir=~/.backup-vim-undo/
 "删除多余空格
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
 endfunc
 autocmd BufWrite * :call DeleteTrailingWS()
 
@@ -444,9 +444,9 @@ set magic
 
 " 记住上次离开的光标位置
 autocmd BufReadPost *
-  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-  \ |   exe "normal! g`\""
-  \ | endif
+            \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+            \ |   exe "normal! g`\""
+            \ | endif
 
 
 autocmd BufWritePost * GitGutter
