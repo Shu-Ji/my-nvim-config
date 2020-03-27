@@ -1,6 +1,6 @@
 # my-nvim-config
 
-### python
+###python
 
 先做两个 py 版本，一个 v2，一个 v3。
 
@@ -15,7 +15,7 @@ workon neovim-py3
 pip3 install -r pip3-requirements.txt
 ```
 
-### nodejs
+## nodejs
 
 TODO
 
@@ -28,7 +28,7 @@ TODO
 ```
 
 
-### 检查
+## 检查
 
 $ nvim
 
