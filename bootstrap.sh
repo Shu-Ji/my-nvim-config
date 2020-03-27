@@ -22,7 +22,7 @@ yarn global add coffeelint
 yarn global add fixjson JSV jsonlint
 
 # css/less/sass/scss
-yarn global add stylelint less
+yarn global add stylelint less sass-lint
 
 # vue
 yarn global add vls
