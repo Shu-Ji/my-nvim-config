@@ -129,6 +129,10 @@ Plug 'sbdchd/neoformat'
 " View 菜单中开启开发者 -> 来自 apple 的消息)
 Plug 'thalesmello/webcomplete.vim'
 
+" 任意跳转
+" https://github.com/pechorin/any-jump.vim
+Plug 'pechorin/any-jump.vim'
+
 call plug#end()
 
 
@@ -470,11 +474,32 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_or_jump)
 nmap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
+" Show line numbers in search rusults
+let g:any_jump_list_numbers = 1
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" Auto search references
+let g:any_jump_references_enabled = 1
+
+" Auto group results by filename
+let g:any_jump_grouping_enabled = 1
+
+" Amount of preview lines for each search result
+let g:any_jump_preview_lines_count = 5
+
+" Max search results, other results can be opened via [a]
+let g:any_jump_max_search_results = 15
+
+" Prefered search engine: rg or ag
+let g:any_jump_search_prefered_engine = 'rg'
+
+" Search results list styles:
+" - 'filename_first'
+" - 'filename_last'
+let g:any_jump_results_ui_style = 'filename_first'
+
+" Remove comments line from search results (default: 1)
+let g:any_jump_remove_comments_from_results = 0
+
 
 " Spaces & Tabs {{{
 set tabstop=4       " number of visual spaces per TAB

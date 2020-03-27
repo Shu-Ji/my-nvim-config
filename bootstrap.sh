@@ -9,8 +9,8 @@ mkdir -p $nvim
 
 ln -s $me/init.vim $nvim/init.vim
 
-brew install martindelille/tap/qmlfmt
-
+brew install martindelille/tap/qmlfmt ripgrep
+sudo apt-get install ripgrep
 
 # 下面大部分是用于 ale 的自动 fix 功能。
 
