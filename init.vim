@@ -319,9 +319,14 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " Preview 窗口设为在当前窗口下面打开
 set splitbelow
 
+" 禁用 semshi 的 lint，因为我们用 ale。
+let g:semshi#error_sign	= 0
+
 " ale lint
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:airline#extensions#ale#enabled = 1
 " 格式显示的文字
 let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
