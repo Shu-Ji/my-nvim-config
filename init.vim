@@ -49,6 +49,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern neovim' }
 " 补全 Python
 Plug 'deoplete-plugins/deoplete-jedi'
+" Python 代码跳转(他也支持补全，但是禁用了，因为我们使用 deoplete)
+Plug 'davidhalter/jedi-vim'
 " 自动缩进
 Plug 'vim-scripts/indentpython.vim'
 
@@ -117,8 +119,6 @@ Plug 'sbdchd/neoformat'
 " 自动格式化
 "Plug 'Chiel92/vim-autoformat'
 
-" Python 代码跳转
-Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
@@ -131,7 +131,7 @@ let g:used_javascript_libs = 'jquery,underscore,angularjs,react,vue'
 
 
 nmap <F8> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
+let g:tagbar_autofocus = 0
 " 打开文件时自动打开tagbar
 autocmd BufEnter *.* :TagbarOpen
 
