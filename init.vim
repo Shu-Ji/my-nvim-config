@@ -547,7 +547,8 @@ let g:deoplete#sources#ternjs#docs = 1
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 let g:jedi#rename_command = "<leader><F6>"
-" 和别的保持琶
+" tern 和别的保持一致
+" https://github.com/ternjs/tern_for_vim
 " 重命名
 nmap <leader><F6> :TernRename<CR>
 " 去往定义
