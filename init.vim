@@ -464,14 +464,11 @@ map <C-l> <C-W>l
 
 " neosnippets
 " https://github.com/Shougo/neosnippet.vim#configuration
-" SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_or_jump)
 nmap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-"imap <expr><cr> (pumvisible() && neosnippet#expandable_or_jumpable()) ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<cr>"
 
 
 " For conceal markers.
