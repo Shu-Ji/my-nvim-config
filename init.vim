@@ -133,8 +133,7 @@ let g:used_javascript_libs = 'jquery,underscore,angularjs,react,vue'
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 0
 " 打开文件时自动打开tagbar
-autocmd BufEnter *.* :TagbarOpen
-
+"autocmd BufEnter *.* :TagbarOpen
 
 " disable autocompletion, cause we use deoplete for completion
 let g:jedi#completions_enabled = 0
@@ -327,7 +326,7 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 " newformat 自动格式化
 " pip install yapf
 "nnoremap <leader>f :Neoformat<cr>
-" ale 支持很多的 fixer，但是不去告 python 的 docformatter，这里用 neoformat 来
+" ale 支持很多的 fixer，但是不 支持 python 的 docformatter，这里用 neoformat 来
 " 格式化即可
 let g:neoformat_enabled_python = ['docformatter']
 
