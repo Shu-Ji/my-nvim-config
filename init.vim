@@ -335,8 +335,8 @@ let g:neoformat_run_all_formatters = 1
 
 " 保存文件的时候自动格式化
 augroup fmt
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
+  autocmd!
+  au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 augroup END
 
 
@@ -454,9 +454,22 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " 备份,到另一个位置. 防止误删
 set backup
-set backupext=.bak
-set backupdir=~/.backup-vim-edited-files
 set noswapfile
+let &backupdir = fnamemodify('~/.backup-vim/files', ':p')
+" 加上日期
+if isdirectory(&backupdir) == 0
+  call mkdir(&backupdir, "p")
+endif
+au BufWritePre * let &bex = '____' . substitute(expand('%:p:h'), '/', '_', 'g') . '______' . strftime("%Y%m%d_%H%M%S")
+
+" create undo file
+let undodir = fnamemodify('~/.backup-vim/undos', ':p')
+if isdirectory(&undodir) == 0
+  call mkdir(&undodir, "p")
+endif
+set undolevels=10000         " How many undos
+set undoreload=10000        " number of lines to save for undo
+set undofile                " keep a persistent backup file
 
 " 突出显示当前行列 不喜欢这种定位可注解
 set cursorcolumn
@@ -467,13 +480,7 @@ set cursorline
 "好处：误删什么的，如果以前屏幕打开，可以找回
 "nvim 拒绝劫持！！！！！
 " set t_ti= t_te=
-
-" create undo file
-set undolevels=10000         " How many undos
-set undoreload=10000        " number of lines to save for undo
-set undofile                " keep a persistent backup file
-set undodir=~/.backup-vim-undo/
-
+"
 " For regular expressions turn magic on
 set magic
 
