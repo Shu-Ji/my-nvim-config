@@ -64,9 +64,6 @@ Plug 'Shougo/neosnippet-snippets'
 " 前端很多的库支持
 Plug 'othree/javascript-libraries-syntax.vim'
 
-" 代码高亮
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
 " 自动补全括号和引号等
 Plug 'jiangmiao/auto-pairs'
 
@@ -133,6 +130,9 @@ Plug 'sbdchd/neoformat'
 " 自动补全，当前 Chrome 中正在查看的页面(仅支持 MacOS，并且需要在 Chrome 的
 " View 菜单中开启开发者 -> 来自 apple 的消息)
 Plug 'thalesmello/webcomplete.vim'
+
+" Python 代码高亮
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " 任意跳转
 " https://github.com/pechorin/any-jump.vim
