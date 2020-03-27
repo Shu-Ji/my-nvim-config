@@ -2,7 +2,7 @@
 
 很多插件需要 Python 和 NodeJS 才能使用。
 
-### Python
+## Python
 
 
 先做两个 py 版本，一个 v2，一个 v3。
@@ -22,9 +22,9 @@ pip3 install -r pip3-requirements.txt
 
 TODO
 
-### 安装需要的库等 
+## 安装需要的库等 
 
-# 大部分是 ale 的 lint 和 autofix 插件。
+大部分是 ale 的 lint 和 autofix 插件。
 
 ```shell
 ./bootstrap.sh
