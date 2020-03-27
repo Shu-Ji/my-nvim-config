@@ -47,6 +47,7 @@ Plug 'lukaszkorecki/coffeetags'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "  补全 js
 Plug 'carlitux/deoplete-ternjs'
+Plug 'ternjs/tern_for_vim'
 " 补全 Python
 Plug 'deoplete-plugins/deoplete-jedi'
 " Python 代码跳转(他也支持补全，但是禁用了，因为我们使用 deoplete)
@@ -536,6 +537,24 @@ let g:ctrlp_follow_symlinks=1
 " 用 python 加速 ctrlp 搜索
 " 需要插件 Plug 'FelikZ/ctrlp-py-matcher'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+
+" ternjs 补全 js 配置
+" https://github.com/carlitux/deoplete-ternjs
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#docs = 1
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+let g:jedi#rename_command = "<leader><F6>"
+" 和别的保持琶
+" 重命名
+nmap <leader><F6> :TernRename<CR>
+" 去往定义
+nmap <leader>d :TernDef<CR>
+" 查看 doc
+nmap <S-k> :TernDoc<CR>
+
 
 " 备份,到另一个位置. 防止误删
 set backup
