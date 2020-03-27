@@ -1,6 +1,7 @@
 " 使用 Python3
-let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.8/bin/python3'
-let g:python_host_prog = '/usr/local/Cellar/python@2/2.7.16/bin/python2.7'
+let g:python3_host_prog = fnamemodify('~/.virtualenvs/neovim-py3/bin/python3', ':p')
+let g:python_host_prog = fnamemodify('~/.virtualenvs/neovim-py2/bin/python2', ':p')
+
 " 禁用 Ruby、Perl
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
@@ -17,6 +18,13 @@ Plug 'morhetz/gruvbox'
 
 " nginx
 Plug 'chr4/nginx.vim'
+
+" qml
+Plug 'peterhoeg/vim-qml'
+
+" dart
+Plug 'dart-lang/dart-vim-plugin'
+
 
 " pug jade
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
@@ -37,8 +45,8 @@ Plug 'lukaszkorecki/coffeetags'
 
 " 自动补全
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" js
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern' }
+"  补全 js
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add tern neovim' }
 " 补全 Python
 Plug 'deoplete-plugins/deoplete-jedi'
 " 自动缩进
@@ -125,7 +133,7 @@ let g:used_javascript_libs = 'jquery,underscore,angularjs,react,vue'
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 " 打开文件时自动打开tagbar
-"autocmd BufEnter *.* :TagbarOpen
+autocmd BufEnter *.* :TagbarOpen
 
 
 " disable autocompletion, cause we use deoplete for completion
@@ -172,8 +180,6 @@ nmap <silent> <leader>ss :so ~/.config/nvim/init.vim<CR>
 noremap <silent><leader>/ :nohls<CR>
 " 全选
 map <Leader>sa ggVG"
-" pip install yapf
-nmap <Leader>l :Neoformat<cr>
 " 新建
 map <leader>tn :tabnew<cr>
 " 运行
@@ -291,16 +297,55 @@ let g:ale_sign_warning = 'W'
 let g:airline#extensions#ale#enabled = 1
 " 格式显示的文字
 let g:ale_echo_msg_format = '[%linter%][%severity%] %s'
+" 指定修复 pep8 错误的 fixer
+" " Do not lint or fix minified files.
+let g:ale_pattern_options = {
+            \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+            \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+            \}
+let g:ale_linter_aliases = {
+            \'vue': ['vue', 'javascript'],
+            \'jsx': ['css', 'javascript'],
+            \}
+let g:ale_linters = {
+            \'vue': ['eslint', 'vls'],
+            \'jsx': ['stylelint', 'eslint'],
+            \}
+let g:ale_fixers = {
+            \'*': ['remove_trailing_lines', 'trim_whitespace', 'prettier'],
+            \'python': ['yapf', 'isort'],
+            \'javascript': ['eslint'],
+            \}
+" 保存的时候自动修复
+let g:ale_fix_on_save = 1
+let g:ale_pattern_options_enabled = 1
+" 修复语法和格式错误 ctr + shift + l"
 " 跳转到下/上 一个问题点
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
-" 指定修复 pep8 错误的 fixer
-let g:ale_fixers = {'python': ['remove_trailing_lines', 'trim_whitespace', 'yapf', 'isort']}
-" 修复语法和格式错误 ctr + shift + l"
-nnoremap <C-S-l> :ALEFix<CR>
 
-" 关闭与vi的兼容模式
-set nocompatible
+" newformat 自动格式化
+" pip install yapf
+"nnoremap <leader>f :Neoformat<cr>
+" ale 支持很多的 fixer，但是不去告 python 的 docformatter，这里用 neoformat 来
+" 格式化即可
+let g:neoformat_enabled_python = ['docformatter']
+
+" Run all enabled formatters (by default Neoformat stops after the first formatter succeeds)
+let g:neoformat_run_all_formatters = 1
+
+" 保存文件的时候自动格式化
+augroup fmt
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
+
+" jsx
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
 
 
 " 显示绝对行号
@@ -430,15 +475,6 @@ set undoreload=10000        " number of lines to save for undo
 set undofile                " keep a persistent backup file
 set undodir=~/.backup-vim-undo/
 
-"删除多余空格
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
-autocmd BufWrite * :call DeleteTrailingWS()
-
 " For regular expressions turn magic on
 set magic
 
@@ -449,4 +485,5 @@ autocmd BufReadPost *
             \ | endif
 
 
+" 左侧显示 git 状态
 autocmd BufWritePost * GitGutter
