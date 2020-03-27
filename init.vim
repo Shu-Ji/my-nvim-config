@@ -97,7 +97,7 @@ Plug 'vim-airline/vim-airline-themes'
 " 注释
 Plug 'scrooloose/nerdcommenter'
 
-" 几乎所有语言的 lint
+" 几乎所有语言的 lint 和自动修复 fix
 Plug 'dense-analysis/ale'
 
 " python import sort
@@ -313,8 +313,19 @@ let g:ale_linters = {
 let g:ale_fixers = {
             \'*': ['remove_trailing_lines', 'trim_whitespace', 'prettier'],
             \'python': ['yapf', 'isort'],
+            \'json': ['fixjson'],
+            \'less': ['stylelint'],
+            \'scss': ['stylelint'],
+            \'sass': ['stylelint'],
+            \'css': ['stylelint'],
+            \'qml': ['qmlfmt'],
+            \'vue': ['eslint'],
+            \'markdown': ['eslint'],
+            \'html': ['html-beautify'],
             \'javascript': ['eslint'],
+            \'sql': ['sqlformat'],
             \}
+
 " 保存的时候自动修复
 let g:ale_fix_on_save = 1
 let g:ale_pattern_options_enabled = 1
@@ -324,20 +335,43 @@ nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
 " newformat 自动格式化
-" pip install yapf
-"nnoremap <leader>f :Neoformat<cr>
+nnoremap <leader>f :Neoformat<cr>
+
 " ale 支持很多的 fixer，但是不 支持 python 的 docformatter，这里用 neoformat 来
 " 格式化即可
+" 尽量使用 ale，因为他是异步的，neoformat 有点卡
 let g:neoformat_enabled_python = ['docformatter']
+
+"  禁用，我们使用 ale
+let g:neoformat_enabled_json = []
+let g:neoformat_enabled_less = []
+let g:neoformat_enabled_scss = []
+let g:neoformat_enabled_sass = []
+let g:neoformat_enabled_css = []
+let g:neoformat_enabled_vue = []
+let g:neoformat_enabled_html = []
+let g:neoformat_enabled_markdown = []
+let g:neoformat_enabled_javascript = []
+let g:neoformat_enabled_qml = []
+let g:neoformat_enabled_sql = []
+
+" pug
+" https://github.com/vingorius/pug-beautifier
+let g:neoformat_pug_pugbeautifier = {
+            \ 'exe': 'pug-beautifier',
+            \ 'args': ['-s 4', '-d'],
+            \ 'stdin': 1,
+            \ }
+let g:neoformat_enabled_pug = ['pugbeautifier']
 
 " Run all enabled formatters (by default Neoformat stops after the first formatter succeeds)
 let g:neoformat_run_all_formatters = 1
 
 " 保存文件的时候自动格式化
-augroup fmt
-  autocmd!
-  au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
-augroup END
+"augroup fmt
+"  autocmd!
+"  au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+"augroup END
 
 
 " jsx
