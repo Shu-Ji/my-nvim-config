@@ -227,8 +227,8 @@ noremap L $
 " 0 到最第一个字符
 map 0 ^
 " 加速翻页
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+"nnoremap <C-e> 2<C-e>
+"nnoremap <C-y> 2<C-y>
 " 移除缩进线
 nnoremap <F3> :IndentLinesToggle<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
@@ -293,7 +293,7 @@ let g:NERDCommentEmptyLines = 1
 " deoplete-jedi Python 补全
 " 自启动
 let g:deoplete#enable_at_startup = 1
-" 自动补全提示默认 ctrl-n 下翻页， 添加劫持 tab
+" 自动补全提示默认 ctrl-n 下翻页， 添加支持  tab
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " 自动补全提示默认 ctrl-p 下翻页，添加劫持 s-tab
 inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<tab>"
@@ -461,6 +461,23 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" neosnippets
+" https://github.com/Shougo/neosnippet.vim#configuration
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_or_jump)
+nmap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+"imap <expr><cr> (pumvisible() && neosnippet#expandable_or_jumpable()) ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<cr>"
+
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " Spaces & Tabs {{{
 set tabstop=4       " number of visual spaces per TAB
