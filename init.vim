@@ -125,6 +125,9 @@ Plug 'sbdchd/neoformat'
 " 自动格式化
 "Plug 'Chiel92/vim-autoformat'
 
+" 自动补全，当前 Chrome 中正在查看的页面(仅支持 MacOS，并且需要在 Chrome 的
+" View 菜单中开启开发者 -> 来自 apple 的消息)
+Plug 'thalesmello/webcomplete.vim'
 
 call plug#end()
 
