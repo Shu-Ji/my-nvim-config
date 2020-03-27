@@ -1,5 +1,10 @@
 # my-nvim-config
 
+主要是支持常用的一些语言的高亮、lint 以及自动 fix。
+
+Python、ES6、CoffeeScript、Pug、Html、CSS(Less/Sass/Scss)、JSX、Vue、lodash、JavaScript、SQL、JSON、QML
+
+
 很多插件需要 Python 和 NodeJS 才能使用。
 
 ## Python
