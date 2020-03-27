@@ -605,6 +605,8 @@ autocmd BufReadPost *
             \ |   exe "normal! g`\""
             \ | endif
 
+" 命令栏高度
+set cmdheight=2
 
 " 左侧显示 git 状态
 autocmd BufWritePost * GitGutter
