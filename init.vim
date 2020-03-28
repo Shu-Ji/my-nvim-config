@@ -28,7 +28,7 @@ Plug 'dart-lang/dart-vim-plugin'
 
 " pug jade
 Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
-Plug 'digitaltoad/vim-jade'
+Plug 'digitaltoad/vim-pug'
 
 
 " ctags
@@ -85,7 +85,7 @@ Plug 'ap/vim-buftabline'
 Plug 'editorconfig/editorconfig-vim'
 
 " vue
-"Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
 "jsx
 Plug 'maxmellon/vim-jsx-pretty'
 " Prettier - automatically format file according to rules/editorconfig
@@ -361,7 +361,7 @@ let g:ale_linter_aliases = {
             \'jsx': ['css', 'javascript'],
             \}
 let g:ale_linters = {
-            \'vue': ['eslint', 'vls'],
+            \'vue': ['vls'],
             \'jsx': ['stylelint', 'eslint'],
             \}
 let g:ale_fixers = {
@@ -402,7 +402,6 @@ let g:neoformat_enabled_less = []
 let g:neoformat_enabled_scss = []
 let g:neoformat_enabled_sass = []
 let g:neoformat_enabled_css = []
-let g:neoformat_enabled_vue = []
 let g:neoformat_enabled_html = []
 let g:neoformat_enabled_markdown = []
 let g:neoformat_enabled_javascript = []
@@ -411,12 +410,17 @@ let g:neoformat_enabled_sql = []
 
 " pug
 " https://github.com/vingorius/pug-beautifier
-let g:neoformat_pug_pugbeautifier = {
+let g:neoformat_pugbeautifier = {
             \ 'exe': 'pug-beautifier',
             \ 'args': ['-s 4', '-d'],
             \ 'stdin': 1,
             \ }
+let g:neoformat_pug_pugbeautifier = g:neoformat_pugbeautifier
+" vue 里面使用 pug
+let g:neoformat_vue_pugbeautifier = g:neoformat_pugbeautifier
+
 let g:neoformat_enabled_pug = ['pugbeautifier']
+let g:neoformat_enabled_vue = ['pugbeautifier']
 
 " Run all enabled formatters (by default Neoformat stops after the first formatter succeeds)
 let g:neoformat_run_all_formatters = 1
