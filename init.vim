@@ -263,6 +263,8 @@ nmap T O<ESC>j
 " 方向键控制 buffer
 noremap <left> :bp<CR>
 noremap <right> :bn<CR>
+noremap <leader>bd :bd<CR>
+
 
 " > <符号缩进
 vnoremap < <gv
@@ -322,6 +324,8 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 " 允许注释和倒空行（在注释区域时很有用）
 let g:NERDCommentEmptyLines = 1
+" leader+空格进行注释 toggle
+noremap <leader><Space> :call NERDComment(0,"toggle")<C-m>
 
 " deoplete-jedi Python 补全
 " 自启动
