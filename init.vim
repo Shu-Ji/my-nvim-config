@@ -60,6 +60,8 @@ Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " 补全
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " 前端很多的库支持
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -154,7 +156,8 @@ let g:CoffeeAutoTagIncludeVars=1
 let g:used_javascript_libs = 'jquery,underscore,angularjs,react,vue'
 
 " 启动 snippet 补全
-let g:neosnippet#enable_completed_snippet = 1
+let g:neosnippet#enable_completed_snippet = 0
+let g:UltiSnipsExpandTrigger="<tab>"
 
 
 nmap <F8> :TagbarToggle<CR>
@@ -483,6 +486,13 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" terminal 模式也支持
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
 
 " neosnippets
 " https://github.com/Shougo/neosnippet.vim#configuration
