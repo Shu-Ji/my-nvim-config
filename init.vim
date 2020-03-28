@@ -238,8 +238,6 @@ func! Run()
 endfunc
 map <leader>r :call Run()<CR>
 inoremap jj <Esc>
-" Ctrl-n切换相对与绝对行号
-nnoremap <C-n> :call NumberToggle()<cr>
 
 " 行首、行尾行尾
 noremap H ^
@@ -275,7 +273,7 @@ au FocusGained * :set relativenumber
 " 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set norelativenumber | set number
 autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
+function! NumberRelativeToggle()
     if(&relativenumber == 1)
         set norelativenumber
         set number
@@ -284,6 +282,21 @@ function! NumberToggle()
         set relativenumber
     endif
 endfunc
+" Ctrl-n切换相对与绝对行号
+nnoremap <C-n> :call NumberRelativeToggle()<cr>
+
+" 关闭行号
+function! NumberToggle()
+    if(&relativenumber == 1 || &number)
+        set norelativenumber
+        set nonumber
+    else
+        set number
+        set relativenumber
+    endif
+endfunc
+nnoremap <F2> :call NumberToggle()<cr>
+
 
 "  设置主题
 colorscheme gruvbox
