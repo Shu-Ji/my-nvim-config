@@ -111,7 +111,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'dense-analysis/ale'
 
 " python import sort
-Plug 'fisadev/vim-isort'
+"Plug 'fisadev/vim-isort'
 
 " ctrlp
 Plug 'ctrlpvim/ctrlp.vim'
@@ -144,7 +144,7 @@ call plug#end()
 " 机器学习 tabnine 预测
 " https://github.com/tbodt/deoplete-tabnine
 call deoplete#custom#var('tabnine', {
-            \ 'line_limit': 10000,
+            \ 'line_limit': 2000,
             \ 'max_num_results': 10,
             \ })
 
@@ -217,7 +217,7 @@ map <leader>tn :tabnew<cr>
 func! Run()
     exec "w"
     if &filetype == 'python'
-        exec "!python %"
+        exec "!python -u %"
     elseif &filetype == 'sh'
         exec "!bash %"
     elseif &filetype == 'javascript'
@@ -264,6 +264,7 @@ nmap T O<ESC>j
 noremap <left> :bp<CR>
 noremap <right> :bn<CR>
 noremap <leader>bd :bd<CR>
+noremap <leader>bc :bd<CR>
 
 
 " > <符号缩进
@@ -339,6 +340,8 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " Preview 窗口设为在当前窗口下面打开
 set splitbelow
 
+set completeopt+=noinsert,menuone
+
 " 禁用 semshi 的 lint，因为我们用 ale。
 let g:semshi#error_sign	= 0
 
@@ -366,7 +369,7 @@ let g:ale_linters = {
             \}
 let g:ale_fixers = {
             \'*': ['remove_trailing_lines', 'trim_whitespace', 'prettier'],
-            \'python': ['yapf', 'isort'],
+            \'python': ['yapf'],
             \'json': ['fixjson'],
             \'less': ['stylelint'],
             \'scss': ['stylelint'],
@@ -492,16 +495,14 @@ syntax on
 " 开启自动识别文件类型，并根据文件类型加载不同的插件和缩进规则
 filetype plugin indent on
 
-" yy直接复制到系统剪切板（For macvim）
-set clipboard=unnamed
+" 不要与系统剪贴板共用
+set clipboard
+xnoremap c "_d
+xnoremap d "_d
 
 " w!!写入只读文件
 cmap w!! w !sudo tee >/dev/null %
 
-"ctr + j 每次移动4行
-"nnoremap <C-j> 4j
-"nnoremap <C-k> 4k
-"
 " 分屏窗口移动
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -519,9 +520,9 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 " https://github.com/Shougo/neosnippet.vim#configuration
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_or_jump)
-nmap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"nmap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
 " Show line numbers in search rusults
 let g:any_jump_list_numbers = 1
@@ -599,11 +600,11 @@ let g:jedi#rename_command = "<leader><F6>"
 " tern 和别的保持一致
 " https://github.com/ternjs/tern_for_vim
 " 重命名
-nmap <leader><F6> :TernRename<CR>
+autocmd FileType javascript nmap <leader><F6> :TernRename<CR>
 " 去往定义
-nmap <leader>d :TernDef<CR>
+autocmd FileType javascript nmap <leader>d :TernDef<CR>
 " 查看 doc
-nmap <S-k> :TernDoc<CR>
+autocmd FileType javascript nmap <S-k> :TernDoc<CR>
 
 
 " 备份,到另一个位置. 防止误删
