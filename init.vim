@@ -66,6 +66,9 @@ Plug 'honza/vim-snippets'
 " 前端很多的库支持
 Plug 'othree/javascript-libraries-syntax.vim'
 
+" jinja2
+Plug 'Glench/Vim-Jinja2-syntax'
+
 " 自动补全括号和引号等
 Plug 'jiangmiao/auto-pairs'
 
@@ -147,6 +150,9 @@ call deoplete#custom#var('tabnine', {
             \ 'line_limit': 2000,
             \ 'max_num_results': 10,
             \ })
+
+
+inoremap <C-a><expr>  (pumvisible()? "\<C-e>" : "") . "\<C-r>+"
 
 
 " ctags 中显示 coffeescript 变量
@@ -378,7 +384,7 @@ let g:ale_fixers = {
             \'qml': ['qmlfmt'],
             \'vue': ['eslint'],
             \'markdown': ['eslint'],
-            \'html': ['html-beautify'],
+            \'html': [],
             \'javascript': ['eslint'],
             \'sql': ['sqlformat'],
             \}
