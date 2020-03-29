@@ -81,9 +81,9 @@ Plug 'tpope/vim-surround'
 "Plug 'plasticboy/vim-markdown'
 
 " buffer tab
-Plug 'ap/vim-buftabline'
+"Plug 'ap/vim-buftabline'
 " minibuffer
-"Plug 'fholgado/minibufexpl.vim'
+Plug 'fholgado/minibufexpl.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
