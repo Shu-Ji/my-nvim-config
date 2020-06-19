@@ -19,6 +19,11 @@ Plug 'morhetz/gruvbox'
 " nginx
 Plug 'chr4/nginx.vim'
 
+" ctrl+shift+f 全局搜索
+" https://github.com/dyng/ctrlsf.vim
+Plug 'dyng/ctrlsf.vim'
+Plug 'terryma/vim-multiple-cursors'
+
 " qml
 Plug 'peterhoeg/vim-qml'
 
@@ -256,6 +261,7 @@ map 0 ^
 " 移除缩进线
 nnoremap <F3> :IndentLinesToggle<CR>
 nnoremap <F4> :set wrap! wrap?<CR>
+nnoremap <F7> :CtrlSF<CR>
 " ;v 选中块
 nnoremap <leader>v V`}
 
@@ -309,6 +315,9 @@ nnoremap <F2> :call NumberToggle()<cr>
 
 "  设置主题
 colorscheme gruvbox
+
+" 不要隐藏 json 的引号
+autocmd Filetype json :IndentLinesDisable
 
 
 map <leader>n :NERDTreeToggle<CR>
@@ -639,11 +648,12 @@ set cursorline
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
 "好处：误删什么的，如果以前屏幕打开，可以找回
-"nvim 拒绝劫持！！！！！
+"nvim 拒绝支持这个:(
 " set t_ti= t_te=
 "
 " For regular expressions turn magic on
 set magic
+set hidden
 
 " 记住上次离开的光标位置
 autocmd BufReadPost *
