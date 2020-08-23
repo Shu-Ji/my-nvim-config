@@ -19,6 +19,13 @@ Plug 'morhetz/gruvbox'
 " nginx
 Plug 'chr4/nginx.vim'
 
+" typescript                                                                              
+" REQUIRED: Add a syntax file. YATS is the best                                           
+Plug 'HerringtonDarkholme/yats.vim'                                                       
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}                                
+" For Denite features                                                                     
+Plug 'Shougo/denite.nvim'
+
 " ctrl+shift+f 全局搜索
 " https://github.com/dyng/ctrlsf.vim
 Plug 'dyng/ctrlsf.vim'
