@@ -48,3 +48,9 @@ $ nvim
 ```
 :checkhealth
 ```
+
+## 安装插件
+
+```
+:PlugInstall
+```
