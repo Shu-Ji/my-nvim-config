@@ -7,7 +7,7 @@ me=`pwd`
 nvim=~/.config/nvim
 mkdir -p $nvim
 
-ln -s $me/init.vim $nvim/init.vim
+cp $me/init.vim $nvim/init.vim
 
 
 brew install martindelille/tap/qmlfmt ripgrep
