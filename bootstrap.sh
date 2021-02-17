@@ -11,7 +11,7 @@ ln -s $me/init.vim $nvim/init.vim
 
 
 brew install martindelille/tap/qmlfmt ripgrep
-sudo apt-get install ripgrep
+#sudo apt-get install ripgrep
 
 # 下面大部分是用于 ale 的自动 fix 功能。
 
@@ -52,4 +52,4 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # 安装所有插件
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
