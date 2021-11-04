@@ -13,17 +13,18 @@ call plug#begin('~/.config/nvim/plugged')
 " 缩进指示线
 Plug 'Yggdroot/indentLine'
 
+
 " 主题
 Plug 'morhetz/gruvbox'
 
 " nginx
 Plug 'chr4/nginx.vim'
 
-" typescript                                                                              
-" REQUIRED: Add a syntax file. YATS is the best                                           
-Plug 'HerringtonDarkholme/yats.vim'                                                       
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}                                
-" For Denite features                                                                     
+" typescript
+" REQUIRED: Add a syntax file. YATS is the best
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" For Denite features
 Plug 'Shougo/denite.nvim'
 
 " ctrl+shift+f 全局搜索
