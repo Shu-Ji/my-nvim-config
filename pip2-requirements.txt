@@ -8,12 +8,12 @@ msgpack==1.0.0
 parso==0.6.2
 prompt-toolkit==2.0.10
 pyflakes==2.2.0
-Pygments==2.7.4
+Pygments==2.5.2
 Pyment==0.3.3
 pynvim==0.4.2
 pyvim==3.0.2
 six==1.14.0
-sqlparse==0.4.2
+sqlparse==0.3.1
 trollius==2.2.post1
 untokenize==0.1.1
 wcwidth==0.2.5
