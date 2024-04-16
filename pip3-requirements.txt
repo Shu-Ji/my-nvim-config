@@ -11,7 +11,7 @@ Pyment==0.3.3
 pynvim==0.4.3
 pyvim==3.0.2
 six==1.15.0
-sqlparse==0.4.4
+sqlparse==0.5.0
 untokenize==0.1.1
 wcwidth==0.2.5
 yapf==0.30.0
