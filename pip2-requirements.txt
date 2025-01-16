@@ -29,7 +29,7 @@ stevedore==1.32.0
 trollius==2.2.post1
 typing==3.10.0.0
 untokenize==0.1.1
-virtualenv==20.14.1
+virtualenv==20.26.6
 virtualenv-clone==0.5.7
 virtualenvwrapper==4.8.4
 wcwidth==0.2.5
